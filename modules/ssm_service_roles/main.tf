@@ -1,3 +1,24 @@
+/**
+* # aws-terraform-iam_resources/modules/ssm_service_roles
+*
+*This submodule creates an IAM Role for the SSM Services
+*
+*## Basic Usage
+*
+*```
+*module "ssm_service_roles" {
+*  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/ssm_service_roles?ref=v0.0.1"
+*
+*  # Optional parameters
+*  #
+*  # create_automation_role         = true
+*  # create_maintenance_window_role = true
+*}
+*```
+*
+* Full working references are available at [examples](examples)
+*/
+
 module "maintenance_window_role" {
   source = "../role"
 

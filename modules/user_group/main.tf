@@ -1,3 +1,21 @@
+/**
+* # aws-terraform-iam_resources/modules/user_group
+*
+*This submodule creates an IAM User Group
+*
+*## Basic Usage
+*
+*```
+*module "user_4" {
+*  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/user_group?ref=v0.0.1"
+*
+*  user_names = ["testuser4a"]
+*}
+*```
+*
+* Full working references are available at [examples](examples)
+*/
+
 resource "aws_iam_user" "user" {
   count = "${length(var.user_names)}"
 
