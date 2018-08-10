@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 module "ssm_service_roles" {
-  source = "../../module/ssm_service_roles"
+  source = "../../module/modules/ssm_service_roles"
 }
 
 output "service_role_details" {

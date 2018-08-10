@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "vpc_peer_cross_account_role" {
 }
 
 module "cross_account_role" {
-  source = "../../module/role"
+  source = "../../module/modules/role"
 
   name        = "MyCrossAccountRole"
   aws_account = ["794790922771"]
@@ -43,7 +43,7 @@ module "cross_account_role" {
 }
 
 module "vpc_peer_cross_account_role" {
-  source = "../../module/role"
+  source = "../../module/modules/role"
 
   name        = "VPCPeerCrossAccountRole"
   aws_account = ["794790922771"]
@@ -96,7 +96,7 @@ data "aws_iam_policy_document" "ec2_instance_policy" {
 }
 
 module "ec2_instance_role" {
-  source = "../../module/role"
+  source = "../../module/modules/role"
 
   name        = "EC2InstanceRole"
   aws_service = ["ec2.amazonaws.com"]

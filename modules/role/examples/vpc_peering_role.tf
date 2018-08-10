@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "vpc_peer_cross_account_role" {
 }
 
 module "vpc_peer_cross_account_role" {
-  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//role?ref=v0.0.1"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/role?ref=v0.0.1"
 
   name        = "VPCPeerCrossAccountRole"
   aws_account = ["794790922771"]

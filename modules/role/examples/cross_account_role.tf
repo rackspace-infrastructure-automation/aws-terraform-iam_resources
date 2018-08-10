@@ -33,7 +33,7 @@ data "template_file" "cross_account_role" {
 }
 
 module "cross_account_role" {
-  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//role?ref=v0.0.1"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/role?ref=v0.0.1"
 
   name        = "MyCrossAccountRole"
   aws_account = ["794790922771"]

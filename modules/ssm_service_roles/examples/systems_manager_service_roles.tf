@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 module "ssm_service_roles" {
-  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//ssm_service_roles?ref=v0.0.1"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/ssm_service_roles?ref=v0.0.1"
 
   # Optional parameters
   #

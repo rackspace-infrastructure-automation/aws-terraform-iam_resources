@@ -47,7 +47,7 @@ data "aws_iam_policy_document" "ec2_instance_policy" {
 }
 
 module "ec2_instance_role" {
-  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//role?ref=v0.0.1"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/role?ref=v0.0.1"
 
   name        = "EC2InstanceRole"
   aws_service = ["ec2.amazonaws.com"]
