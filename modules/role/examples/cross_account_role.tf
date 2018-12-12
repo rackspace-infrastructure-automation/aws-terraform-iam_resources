@@ -20,7 +20,7 @@ resource "random_string" "external_id" {
 }
 
 module "sns" {
-  source     = "git@github.com:rackspace-infrastructure-automation/aws-terraform-sns//?ref=v0.0.1"
+  source     = "git@github.com:rackspace-infrastructure-automation/aws-terraform-sns//?ref=master"
   topic_name = "my-example-topic"
 }
 
