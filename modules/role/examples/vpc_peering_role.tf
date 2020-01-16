@@ -1,5 +1,5 @@
 provider "aws" {
-  version = "~> 1.2"
+  version = ">= 2.1.0"
   region  = "us-west-2"
 }
 
@@ -17,6 +17,7 @@ module "vpc_peer_cross_account_role" {
   name        = "VPCPeerCrossAccountRole"
   aws_account = ["794790922771"]
 
-  inline_policy       = ["${data.aws_iam_policy_document.vpc_peer_cross_account_role.json}"]
+  inline_policy       = [data.aws_iam_policy_document.vpc_peer_cross_account_role.json]
   inline_policy_count = 1
 }
+

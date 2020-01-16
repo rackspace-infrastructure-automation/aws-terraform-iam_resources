@@ -1,14 +1,14 @@
 provider "aws" {
-  version = "~> 1.2"
+  version = ">= 2.1.0"
   region  = "us-west-2"
 }
 
 provider "template" {
-  version = "~> 1.0"
+  version = "~> 2.0"
 }
 
 provider "random" {
-  version = "~> 1.0"
+  version = "~> 2.0"
 }
 
 resource "random_string" "external_id" {
@@ -25,10 +25,10 @@ module "sns" {
 }
 
 data "template_file" "cross_account_role" {
-  template = "${file("${path.module}/cross_account_role_policy.json")}"
+  template = file("${path.module}/cross_account_role_policy.json")
 
   vars = {
-    sns_topic = "${module.sns.topic_arn}"
+    sns_topic = module.sns.topic_arn
   }
 }
 
@@ -37,8 +37,9 @@ module "cross_account_role" {
 
   name        = "MyCrossAccountRole"
   aws_account = ["794790922771"]
-  external_id = "${random_string.external_id.result}"
+  external_id = random_string.external_id.result
 
-  inline_policy       = ["${data.template_file.cross_account_role.rendered}"]
+  inline_policy       = [data.template_file.cross_account_role.rendered]
   inline_policy_count = 1
 }
+
