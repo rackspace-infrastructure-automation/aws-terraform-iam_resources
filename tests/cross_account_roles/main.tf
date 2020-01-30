@@ -1,14 +1,18 @@
+terraform {
+  required_version = ">= 0.12"
+}
+
 provider "aws" {
-  version = "~> 1.2"
+  version = "~> 2.1"
   region  = "us-west-2"
 }
 
 provider "template" {
-  version = "~> 1.0"
+  version = "~> 2.0"
 }
 
 provider "random" {
-  version = "~> 1.0"
+  version = "~> 2.0"
 }
 
 resource "random_string" "external_id" {
@@ -20,7 +24,7 @@ resource "random_string" "external_id" {
 }
 
 data "template_file" "cross_account_role" {
-  template = "${file("${path.module}/cross_account_role_policy.json")}"
+  template = file("${path.module}/cross_account_role_policy.json")
 }
 
 data "aws_iam_policy_document" "vpc_peer_cross_account_role" {
@@ -36,9 +40,9 @@ module "cross_account_role" {
 
   name        = "MyCrossAccountRole"
   aws_account = ["794790922771"]
-  external_id = "${random_string.external_id.result}"
+  external_id = random_string.external_id.result
 
-  inline_policy       = ["${data.template_file.cross_account_role.rendered}"]
+  inline_policy       = [data.template_file.cross_account_role.rendered]
   inline_policy_count = 1
 }
 
@@ -48,7 +52,7 @@ module "vpc_peer_cross_account_role" {
   name        = "VPCPeerCrossAccountRole"
   aws_account = ["794790922771"]
 
-  inline_policy       = ["${data.aws_iam_policy_document.vpc_peer_cross_account_role.json}"]
+  inline_policy       = [data.aws_iam_policy_document.vpc_peer_cross_account_role.json]
   inline_policy_count = 1
 }
 
@@ -104,6 +108,7 @@ module "ec2_instance_role" {
   policy_arns       = ["arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"]
   policy_arns_count = 1
 
-  inline_policy       = ["${data.aws_iam_policy_document.ec2_instance_policy.json}"]
+  inline_policy       = [data.aws_iam_policy_document.ec2_instance_policy.json]
   inline_policy_count = 1
 }
+

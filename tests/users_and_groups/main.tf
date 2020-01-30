@@ -1,5 +1,9 @@
+terraform {
+  required_version = ">= 0.12"
+}
+
 provider "aws" {
-  version = "~> 1.2"
+  version = "~> 2.1"
   region  = "us-west-2"
 }
 
@@ -20,7 +24,7 @@ module "user_2" {
   group_name          = "testgroup2"
   policy_arns         = ["arn:aws:iam::aws:policy/PowerUserAccess"]
   policy_arns_count   = 1
-  existing_user_names = ["${module.user_1.user_names}"]
+  existing_user_names = module.user_1.user_names
 }
 
 # New users and adding existing users from two other modules
@@ -31,7 +35,7 @@ module "user_3" {
   group_name          = "testgroup3"
   policy_arns         = ["arn:aws:iam::aws:policy/ReadOnlyAccess"]
   policy_arns_count   = 1
-  existing_user_names = ["${concat(module.user_1.user_names, module.user_2.user_names)}"]
+  existing_user_names = concat(module.user_1.user_names, module.user_2.user_names)
 }
 
 # User with no group
@@ -40,3 +44,4 @@ module "user_4" {
 
   user_names = ["testuser4a"]
 }
+
