@@ -1,12 +1,7 @@
-variable "name" {
-  description = "The name prefix for these IAM resources"
-  type        = string
-}
-
-variable "build_state" {
-  description = "A variable to control whether resources should be built"
-  type        = string
-  default     = true
+variable "aws_account" {
+  description = "A list of AWS accounts allowed to use this cross account role.  Required if the aws_services variable is not provided."
+  type        = list(string)
+  default     = []
 }
 
 variable "aws_service" {
@@ -15,10 +10,10 @@ variable "aws_service" {
   default     = []
 }
 
-variable "aws_account" {
-  description = "A list of AWS accounts allowed to use this cross account role.  Required if the aws_services variable is not provided."
-  type        = list(string)
-  default     = []
+variable "build_state" {
+  description = "A variable to control whether resources should be built"
+  type        = string
+  default     = true
 }
 
 variable "external_id" {
@@ -37,6 +32,11 @@ variable "inline_policy_count" {
   description = "The number of inline policies to be applied to the role."
   type        = string
   default     = 0
+}
+
+variable "name" {
+  description = "The name prefix for these IAM resources"
+  type        = string
 }
 
 variable "policy_arns" {

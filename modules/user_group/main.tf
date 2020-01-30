@@ -30,9 +30,9 @@ resource "aws_iam_user" "user" {
 resource "aws_iam_group_membership" "team" {
   count = var.group_name == "" ? 0 : 1
 
+  group = element(concat(aws_iam_group.group.*.name, [""]), 0)
   name  = "${var.group_name}-group-membership"
   users = concat(aws_iam_user.user.*.name, var.existing_user_names)
-  group = element(concat(aws_iam_group.group.*.name, [""]), 0)
 }
 
 resource "aws_iam_group" "group" {

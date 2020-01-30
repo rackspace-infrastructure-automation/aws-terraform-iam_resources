@@ -8,14 +8,14 @@ output "automation_id" {
   value       = module.automation_role.id
 }
 
-output "automation_name" {
-  description = "Automation Service IAM role name"
-  value       = module.automation_role.name
-}
-
 output "automation_instance_profile" {
   description = "Automation Service IAM Instance Profile name"
   value       = module.automation_role.instance_profile
+}
+
+output "automation_name" {
+  description = "Automation Service IAM role name"
+  value       = module.automation_role.name
 }
 
 output "maintenance_window_arn" {
@@ -28,14 +28,14 @@ output "maintenance_window_id" {
   value       = module.maintenance_window_role.id
 }
 
-output "maintenance_window_name" {
-  description = "Maintenance Window IAM role name"
-  value       = module.maintenance_window_role.name
-}
-
 output "maintenance_window_instance_profile" {
   description = "Maintenance Window IAM Instance Profile name"
   value       = module.maintenance_window_role.instance_profile
+}
+
+output "maintenance_window_name" {
+  description = "Maintenance Window IAM role name"
+  value       = module.maintenance_window_role.name
 }
 
 output "module_details" {

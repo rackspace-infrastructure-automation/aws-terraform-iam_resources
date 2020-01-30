@@ -26,9 +26,9 @@ terraform {
 module "maintenance_window_role" {
   source = "../role"
 
-  name        = "MaintenanceWindowServiceRole"
-  build_state = var.create_maintenance_window_role
   aws_service = ["ec2.amazonaws.com", "ssm.amazonaws.com", "sns.amazonaws.com"]
+  build_state = var.create_maintenance_window_role
+  name        = "MaintenanceWindowServiceRole"
 
   policy_arns       = ["arn:aws:iam::aws:policy/service-role/AmazonSSMMaintenanceWindowRole"]
   policy_arns_count = 1
@@ -37,14 +37,14 @@ module "maintenance_window_role" {
 # Since this policy references the IAM role itself, it must be created and attached after the role is created.
 data "aws_iam_policy_document" "maintenance_window_policy" {
   statement {
-    effect    = "Allow"
     actions   = ["sns:Publish"]
+    effect    = "Allow"
     resources = ["*"]
   }
 
   statement {
-    effect    = "Allow"
     actions   = ["iam:PassRole"]
+    effect    = "Allow"
     resources = [module.maintenance_window_role.arn]
   }
 }
@@ -53,16 +53,16 @@ resource "aws_iam_role_policy" "maintenance_window_policy" {
   count = var.create_maintenance_window_role ? 1 : 0
 
   name   = "MaintenanceWindowServiceRoleInlinePolicy"
-  role   = module.maintenance_window_role.id
   policy = data.aws_iam_policy_document.maintenance_window_policy.json
+  role   = module.maintenance_window_role.id
 }
 
 module "automation_role" {
   source = "../role"
 
-  name        = "AutomationServiceRole"
-  build_state = var.create_automation_role
   aws_service = ["ec2.amazonaws.com", "ssm.amazonaws.com"]
+  build_state = var.create_automation_role
+  name        = "AutomationServiceRole"
 
   policy_arns = [
     "arn:aws:iam::aws:policy/service-role/AmazonSSMAutomationRole",
@@ -75,14 +75,14 @@ module "automation_role" {
 # Since this policy references the IAM role itself, it must be created and attached after the role is created.
 data "aws_iam_policy_document" "automation_policy" {
   statement {
-    effect    = "Allow"
     actions   = ["sns:Publish"]
+    effect    = "Allow"
     resources = ["*"]
   }
 
   statement {
-    effect    = "Allow"
     actions   = ["iam:PassRole"]
+    effect    = "Allow"
     resources = [module.automation_role.arn]
   }
 }
