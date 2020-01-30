@@ -18,7 +18,7 @@ variable "policy_arns" {
 
 variable "policy_arns_count" {
   description = "The number of managed policies to be applied to the role."
-  type        = string
+  type        = number
   default     = 0
 }
 

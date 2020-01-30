@@ -12,7 +12,7 @@ variable "aws_service" {
 
 variable "build_state" {
   description = "A variable to control whether resources should be built"
-  type        = string
+  type        = bool
   default     = true
 }
 
@@ -30,7 +30,7 @@ variable "inline_policy" {
 
 variable "inline_policy_count" {
   description = "The number of inline policies to be applied to the role."
-  type        = string
+  type        = number
   default     = 0
 }
 
@@ -47,7 +47,7 @@ variable "policy_arns" {
 
 variable "policy_arns_count" {
   description = "The number of managed policies to be applied to the role."
-  type        = string
+  type        = number
   default     = 0
 }
 
