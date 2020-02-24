@@ -1,24 +1,24 @@
-/**
+/* 
 * # aws-terraform-iam_resources/modules/role
 *
-*This submodule creates an IAM Role
+* This submodule creates an IAM Role
 *
-*## Basic Usage
+* ## Basic Usage
 *
-*```
-*module "ec2_instance_role" {
-*  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/role?ref=v0.0.1"
+* ```
+* module "ec2_instance_role" {
+*   source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/role?ref=v0.12.0"
 *
-*  name        = "EC2InstanceRole"
-*  aws_service = ["ec2.amazonaws.com"]
+*   name        = "EC2InstanceRole"
+*   aws_service = ["ec2.amazonaws.com"]
 *
-*  policy_arns       = ["arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"]
-*  policy_arns_count = 1
+*   policy_arns       = ["arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"]
+*   policy_arns_count = 1
 *
-*  inline_policy       = ["${data.aws_iam_policy_document.ec2_instance_policy.json}"]
-*  inline_policy_count = 1
-*}
-*```
+*   inline_policy       = ["${data.aws_iam_policy_document.ec2_instance_policy.json}"]
+*   inline_policy_count = 1
+* }
+* ```
 *
 * Full working references are available at [examples](examples)
 */
@@ -111,5 +111,3 @@ resource "aws_iam_instance_profile" "instance_profile" {
   path        = "/"
   role        = aws_iam_role.role[0].name
 }
-
-

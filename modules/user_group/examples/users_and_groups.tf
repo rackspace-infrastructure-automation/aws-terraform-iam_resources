@@ -8,7 +8,7 @@ provider "aws" {
 }
 
 module "user_1" {
-  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/user_group?ref=v0.0.1"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/user_group?ref=v0.12.0"
 
   user_names        = ["testuser1a", "testuser1b", "testuser1c"]
   group_name        = "testgroup1"
@@ -18,7 +18,7 @@ module "user_1" {
 
 # New users and adding existing users from another module
 module "user_2" {
-  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/user_group?ref=v0.0.1"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/user_group?ref=v0.12.0"
 
   user_names          = ["testuser2a", "testuser2b"]
   group_name          = "testgroup2"
@@ -29,7 +29,7 @@ module "user_2" {
 
 # New users and adding existing users from two other modules
 module "user_3" {
-  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/user_group?ref=v0.0.1"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/user_group?ref=v0.12.0"
 
   user_names          = ["testuser3a", "testuser3b"]
   group_name          = "testgroup3"
@@ -40,8 +40,7 @@ module "user_3" {
 
 # User with no group
 module "user_4" {
-  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/user_group?ref=v0.0.1"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/user_group?ref=v0.12.0"
 
   user_names = ["testuser4a"]
 }
-

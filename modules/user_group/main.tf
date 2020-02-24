@@ -1,17 +1,17 @@
-/**
+/*
 * # aws-terraform-iam_resources/modules/user_group
 *
-*This submodule creates an IAM User Group
+* This submodule creates an IAM User Group
 *
-*## Basic Usage
+* ## Basic Usage
 *
-*```
-*module "user_4" {
-*  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/user_group?ref=v0.0.1"
+* ```
+* module "user_4" {
+*   source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/user_group?ref=v0.0.1"
 *
-*  user_names = ["testuser4a"]
-*}
-*```
+*   user_names = ["testuser4a"]
+* }
+* ```
 *
 * Full working references are available at [examples](examples)
 */
@@ -52,4 +52,3 @@ resource "aws_iam_group_policy_attachment" "policy" {
   group      = element(concat(aws_iam_group.group.*.name, [""]), 0)
   policy_arn = element(var.policy_arns, count.index)
 }
-
