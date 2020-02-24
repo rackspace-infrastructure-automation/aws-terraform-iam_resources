@@ -1,4 +1,4 @@
-# aws-terraform-iam_resources/modules/ssm_service_roles
+# aws-terraform-iam\_resources/modules/ssm\_service\_roles
 
 This submodule creates an IAM Role for the SSM Services
 
@@ -6,23 +6,29 @@ This submodule creates an IAM Role for the SSM Services
 
 ```
 module "ssm_service_roles" {
- source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/ssm_service_roles?ref=v0.0.1"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/ssm_service_roles?ref=v0.12.0"
 
- # Optional parameters
- #
- # create_automation_role         = true
- # create_maintenance_window_role = true
+  # Optional parameters
+  #
+  # create_automation_role         = true
+  # create_maintenance_window_role = true
 }
 ```
 
 Full working references are available at [examples](examples)
 
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | >= 2.1.0 |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| create\_automation\_role | A variable to control whether the Automation Service IAM role should be created | string | `"true"` | no |
-| create\_maintenance\_window\_role | A variable to control whether the Maintenance Window Service IAM role should be created | string | `"true"` | no |
+|------|-------------|------|---------|:-----:|
+| create\_automation\_role | A variable to control whether the Automation Service IAM role should be created | `bool` | `true` | no |
+| create\_maintenance\_window\_role | A variable to control whether the Maintenance Window Service IAM role should be created | `bool` | `true` | no |
 
 ## Outputs
 

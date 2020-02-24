@@ -24,8 +24,8 @@ resource "random_string" "external_id" {
 }
 
 module "sns" {
-  source     = "git@github.com:rackspace-infrastructure-automation/aws-terraform-sns//?ref=v0.0.1"
-  topic_name = "my-example-topic"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-sns//?ref=v0.12.1"
+  name   = "my-example-topic"
 }
 
 data "template_file" "cross_account_role" {
@@ -37,7 +37,7 @@ data "template_file" "cross_account_role" {
 }
 
 module "cross_account_role" {
-  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/role?ref=v0.0.1"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/role?ref=v0.12.0"
 
   name        = "MyCrossAccountRole"
   aws_account = ["794790922771"]
@@ -46,4 +46,3 @@ module "cross_account_role" {
   inline_policy       = [data.template_file.cross_account_role.rendered]
   inline_policy_count = 1
 }
-

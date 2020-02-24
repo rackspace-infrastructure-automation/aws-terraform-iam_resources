@@ -8,10 +8,9 @@ provider "aws" {
 }
 
 module "ssm_service_roles" {
-  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/ssm_service_roles?ref=v0.0.1"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/ssm_service_roles?ref=v0.12.0"
   # Optional parameters
   #
   # create_automation_role         = true
   # create_maintenance_window_role = true
 }
-
