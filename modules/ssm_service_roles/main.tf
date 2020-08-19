@@ -70,10 +70,12 @@ module "automation_role" {
 
   policy_arns = [
     "arn:aws:iam::aws:policy/service-role/AmazonSSMAutomationRole",
-    "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM",
+    "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+    "arn:aws:iam::aws:policy/AmazonSSMDirectoryServiceAccess",
+    "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy",
   ]
 
-  policy_arns_count = 2
+  policy_arns_count = 4
 }
 
 # Since this policy references the IAM role itself, it must be created and attached after the role is created.
@@ -88,6 +90,21 @@ data "aws_iam_policy_document" "automation_policy" {
     actions   = ["iam:PassRole"]
     effect    = "Allow"
     resources = [module.automation_role.arn]
+  }
+
+  statement {
+    actions = [
+      "s3:AbortMultipartUpload",
+      "s3:GetEncryptionConfiguration",
+      "s3:GetBucketLocation",
+      "s3:GetObject",
+      "s3:ListBucket",
+      "s3:ListBucketMultipartUploads",
+      "s3:ListMultipartUploadParts",
+      "s3:PutObject",
+    ]
+    effect    = "Allow"
+    resources = ["arn:aws:s3:::rackspace-*/*"]
   }
 }
 
