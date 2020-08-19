@@ -12,7 +12,7 @@
 *   name        = "EC2InstanceRole"
 *   aws_service = ["ec2.amazonaws.com"]
 *
-*   policy_arns       = ["arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"]
+*   policy_arns       = ["arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"]
 *   policy_arns_count = 1
 *
 *   inline_policy       = ["${data.aws_iam_policy_document.ec2_instance_policy.json}"]

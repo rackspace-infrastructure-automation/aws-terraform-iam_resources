@@ -29,14 +29,8 @@ data "aws_iam_policy_document" "ec2_instance_policy" {
     effect = "Allow"
 
     actions = [
-      "cloudwatch:PutMetricData",
       "cloudwatch:GetMetricStatistics",
       "cloudwatch:ListMetrics",
-      "logs:CreateLogStream",
-      "ec2:DescribeTags",
-      "logs:DescribeLogStreams",
-      "logs:CreateLogGroup",
-      "logs:PutLogEvents",
       "ssm:GetParameter",
     ]
 
@@ -44,9 +38,18 @@ data "aws_iam_policy_document" "ec2_instance_policy" {
   }
 
   statement {
+    actions = [
+      "s3:AbortMultipartUpload",
+      "s3:GetEncryptionConfiguration",
+      "s3:GetBucketLocation",
+      "s3:GetObject",
+      "s3:ListBucket",
+      "s3:ListBucketMultipartUploads",
+      "s3:ListMultipartUploadParts",
+      "s3:PutObject",
+    ]
     effect    = "Allow"
-    actions   = ["ec2:DescribeTags"]
-    resources = ["*"]
+    resources = ["arn:aws:s3:::rackspace-*/*"]
   }
 }
 
@@ -56,8 +59,11 @@ module "ec2_instance_role" {
   name        = "EC2InstanceRole"
   aws_service = ["ec2.amazonaws.com"]
 
-  policy_arns       = ["arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"]
-  policy_arns_count = 1
+  policy_arns = [
+    "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+    "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy",
+  ]
+  policy_arns_count = 2
 
   inline_policy       = [data.aws_iam_policy_document.ec2_instance_policy.json]
   inline_policy_count = 1
