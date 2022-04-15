@@ -17,16 +17,37 @@ module "ssm_service_roles" {
 
 Full working references are available at [examples](examples)
 
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+| aws | >= 2.7.0 |
+
 ## Providers
 
 | Name | Version |
 |------|---------|
 | aws | >= 2.7.0 |
 
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| automation_role | ../role |  |
+| maintenance_window_role | ../role |  |
+
+## Resources
+
+| Name |
+|------|
+| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/data-sources/iam_policy_document) |
+| [aws_iam_role_policy](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_role_policy) |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | create\_automation\_role | A variable to control whether the Automation Service IAM role should be created | `bool` | `true` | no |
 | create\_maintenance\_window\_role | A variable to control whether the Maintenance Window Service IAM role should be created | `bool` | `true` | no |
 
@@ -43,4 +64,3 @@ Full working references are available at [examples](examples)
 | maintenance\_window\_instance\_profile | Maintenance Window IAM Instance Profile name |
 | maintenance\_window\_name | Maintenance Window IAM role name |
 | module\_details | All details about created SSM Service Roles |
-

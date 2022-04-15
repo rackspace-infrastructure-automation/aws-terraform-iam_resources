@@ -14,16 +14,36 @@ module "user_4" {
 
 Full working references are available at [examples](examples)
 
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+| aws | >= 2.7.0 |
+
 ## Providers
 
 | Name | Version |
 |------|---------|
 | aws | >= 2.7.0 |
 
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [aws_iam_group](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_group) |
+| [aws_iam_group_membership](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_group_membership) |
+| [aws_iam_group_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_group_policy_attachment) |
+| [aws_iam_user](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_user) |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | existing\_user\_names | A list of existing IAM users.  These users will also  be added to the created group. | `list(string)` | `[]` | no |
 | group\_name | The name to assign to the IAM Group created for these users.  If omitted no group will be created. | `string` | `""` | no |
 | policy\_arns | A list of managed IAM policies to attach to the IAM group | `list(string)` | `[]` | no |
@@ -38,4 +58,3 @@ Full working references are available at [examples](examples)
 | group\_id | IAM group id |
 | group\_name | IAM group name |
 | user\_names | The list of created IAM users |
-
