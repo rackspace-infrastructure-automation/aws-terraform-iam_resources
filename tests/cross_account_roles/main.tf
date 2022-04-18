@@ -7,10 +7,6 @@ provider "aws" {
   region  = "us-west-2"
 }
 
-provider "template" {
-  version = "~> 2.0"
-}
-
 provider "random" {
   version = "~> 2.0"
 }
@@ -21,10 +17,6 @@ resource "random_string" "external_id" {
   min_upper   = 1
   min_lower   = 1
   min_numeric = 1
-}
-
-data "template_file" "cross_account_role" {
-  template = file("${path.module}/cross_account_role_policy.json")
 }
 
 data "aws_iam_policy_document" "vpc_peer_cross_account_role" {
@@ -42,7 +34,7 @@ module "cross_account_role" {
   aws_account = ["794790922771"]
   external_id = random_string.external_id.result
 
-  inline_policy       = [data.template_file.cross_account_role.rendered]
+  inline_policy       = [templatefile("${path.module}/cross_account_role_policy.json", {})]
   inline_policy_count = 1
 }
 

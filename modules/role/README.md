@@ -21,16 +21,37 @@ module "ec2_instance_role" {
 
 Full working references are available at [examples](examples)
 
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+| aws | >= 2.7.0 |
+
 ## Providers
 
 | Name | Version |
 |------|---------|
 | aws | >= 2.7.0 |
 
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [aws_iam_instance_profile](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_instance_profile) |
+| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/data-sources/iam_policy_document) |
+| [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_role) |
+| [aws_iam_role_policy](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_role_policy) |
+| [aws_iam_role_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_role_policy_attachment) |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | aws\_account | A list of AWS accounts allowed to use this cross account role.  Required if the aws\_services variable is not provided. | `list(string)` | `[]` | no |
 | aws\_service | A list of AWS services allowed to assume this role.  Required if the aws\_accounts variable is not provided. | `list(string)` | `[]` | no |
 | build\_state | A variable to control whether resources should be built | `bool` | `true` | no |
@@ -49,4 +70,3 @@ Full working references are available at [examples](examples)
 | id | IAM role id |
 | instance\_profile | IAM Instance Profile name |
 | name | IAM role name |
-
