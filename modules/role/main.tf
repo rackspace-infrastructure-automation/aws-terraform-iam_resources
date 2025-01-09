@@ -7,7 +7,7 @@
 *
 * ```
 * module "ec2_instance_role" {
-*   source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/role?ref=v0.12.0"
+*   source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/role?ref=v0.12.5"
 *
 *   name        = "EC2InstanceRole"
 *   aws_service = ["ec2.amazonaws.com"]
@@ -24,11 +24,16 @@
 */
 
 terraform {
-  required_version = ">= 0.12"
-
   required_providers {
-    aws = ">= 2.7.0"
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0"
+    }
   }
+}
+
+provider "aws" {
+  region = "us-east-1"
 }
 
 locals {

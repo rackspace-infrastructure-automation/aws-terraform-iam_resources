@@ -1,10 +1,14 @@
 terraform {
-  required_version = ">= 0.12"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0"
+    }
+  }
 }
 
 provider "aws" {
-  version = "~> 3.0"
-  region  = "us-west-2"
+  region = "us-east-1"
 }
 
 data "aws_iam_policy_document" "ec2_instance_policy" {
@@ -54,7 +58,7 @@ data "aws_iam_policy_document" "ec2_instance_policy" {
 }
 
 module "ec2_instance_role" {
-  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/role?ref=v0.12.0"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/role?ref=v0.12.5"
 
   name        = "EC2InstanceRole"
   aws_service = ["ec2.amazonaws.com"]
