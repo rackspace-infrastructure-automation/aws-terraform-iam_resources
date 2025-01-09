@@ -21,14 +21,13 @@ Full working references are available at [examples](examples)
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12 |
-| aws | >= 2.7.0 |
+| aws | >= 4.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 2.7.0 |
+| aws | >= 4.0 |
 
 ## Modules
 
@@ -41,8 +40,8 @@ Full working references are available at [examples](examples)
 
 | Name |
 |------|
-| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/data-sources/iam_policy_document) |
-| [aws_iam_role_policy](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_role_policy) |
+| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/4.0/docs/data-sources/iam_policy_document) |
+| [aws_iam_role_policy](https://registry.terraform.io/providers/hashicorp/aws/4.0/docs/resources/iam_role_policy) |
 
 ## Inputs
 

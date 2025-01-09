@@ -1,10 +1,14 @@
 terraform {
-  required_version = ">= 0.12"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0"
+    }
+  }
 }
 
 provider "aws" {
-  version = "~> 3.0"
-  region  = "us-west-2"
+  region = "us-east-1"
 }
 
 data "aws_iam_policy_document" "vpc_peer_cross_account_role" {
@@ -16,7 +20,7 @@ data "aws_iam_policy_document" "vpc_peer_cross_account_role" {
 }
 
 module "vpc_peer_cross_account_role" {
-  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/role?ref=v0.12.0"
+  source = "git@github.com:rackspace-infrastructure-automation/aws-terraform-iam_resources//modules/role?ref=v0.12.5"
 
   name        = "VPCPeerCrossAccountRole"
   aws_account = ["794790922771"]

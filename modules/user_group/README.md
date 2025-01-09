@@ -18,14 +18,13 @@ Full working references are available at [examples](examples)
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12 |
-| aws | >= 2.7.0 |
+| aws | >= 4.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 2.7.0 |
+| aws | >= 4.0 |
 
 ## Modules
 
@@ -35,10 +34,10 @@ No Modules.
 
 | Name |
 |------|
-| [aws_iam_group](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_group) |
-| [aws_iam_group_membership](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_group_membership) |
-| [aws_iam_group_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_group_policy_attachment) |
-| [aws_iam_user](https://registry.terraform.io/providers/hashicorp/aws/2.7.0/docs/resources/iam_user) |
+| [aws_iam_group](https://registry.terraform.io/providers/hashicorp/aws/4.0/docs/resources/iam_group) |
+| [aws_iam_group_membership](https://registry.terraform.io/providers/hashicorp/aws/4.0/docs/resources/iam_group_membership) |
+| [aws_iam_group_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/4.0/docs/resources/iam_group_policy_attachment) |
+| [aws_iam_user](https://registry.terraform.io/providers/hashicorp/aws/4.0/docs/resources/iam_user) |
 
 ## Inputs
 
